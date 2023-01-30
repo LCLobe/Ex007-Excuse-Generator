@@ -9,27 +9,40 @@ import "./assets/img/granma.jpg";
 import "./assets/img/turtle.jpg";
 import "./assets/img/4geeks.ico";
 
-let whoRandomSelection = 0;
-let imagePath = "";
+//let whoRandomSelection = 0;
+//let imagePath = "";
 
 window.onload = function() {
   //write your code here
   console.log("Hello Rigo from the console!");
   const theExcuse = document.querySelector("#the-excuse");
 
-  theExcuse.innerHTML = generateExcuse();
+  let theExcuseInfo = generateExcuse();
+  theExcuse.innerHTML = theExcuseInfo[0];
+
+  let theExcusePicture = imageDisplay(theExcuseInfo[1]);
+  document.getElementById("author").src = theExcusePicture;
+
+  //imageDisplay(whoRandomSelection);
+  //document.getElementById("author").src = imagePath;
+  //document.getElementById("author").src = "./dog.jpg";
 
   document?.querySelector("#btn")?.addEventListener("click", () => {
+    theExcuseInfo = generateExcuse();
+    theExcuse.innerHTML = theExcuseInfo[0];
+    theExcusePicture = imageDisplay(theExcuseInfo[1]);
+    document.getElementById("author").src = theExcusePicture;
     //theExcuse.innerHTML = generateExcuse();
-    location.reload();
+    //location.reload();
   });
   document?.querySelector("#cuerpo")?.addEventListener("click", () => {
+    theExcuseInfo = generateExcuse();
+    theExcuse.innerHTML = theExcuseInfo[0];
+    theExcusePicture = imageDisplay(theExcuseInfo[1]);
+    document.getElementById("author").src = theExcusePicture;
     //theExcuse.innerHTML = generateExcuse();
-    location.reload();
+    //location.reload();
   });
-  imageDisplay(whoRandomSelection);
-  document.getElementById("author").src = imagePath;
-  //document.getElementById("author").src = "./dog.jpg";
 };
 
 function generateExcuse() {
@@ -44,36 +57,49 @@ function generateExcuse() {
     "while I was praying"
   ];
 
-  whoRandomSelection = Math.floor(Math.random() * who.length);
-  // let whoRandomSelection = Math.floor(Math.random() * who.length);
+  //whoRandomSelection = Math.floor(Math.random() * who.length);
+  let whoRandomSelection = Math.floor(Math.random() * who.length);
   let actionRandomSelection = Math.floor(Math.random() * action.length);
   let whatRandomSelection = Math.floor(Math.random() * what.length);
   let whenRandomSelection = Math.floor(Math.random() * when.length);
 
   const result = `${who[whoRandomSelection]} ${action[actionRandomSelection]} ${what[whatRandomSelection]} ${when[whenRandomSelection]}`;
-  console.log(result);
-  return result;
+  //return result;
+  //const imagePath = imageDisplay(whoRandomSelection);
+  //const infoToReturn = [result, imagePath];
+  const infoToReturn = [
+    result,
+    whoRandomSelection,
+    actionRandomSelection,
+    whatRandomSelection,
+    whenRandomSelection
+  ];
+  return infoToReturn;
 }
 
 function imageDisplay(selection) {
-  //let imagePath ="";
+  //let selection = "";
   switch (selection) {
     case 0: {
-      imagePath = "./dog.jpg";
+      //imagePath = "./dog.jpg";
+      selection = "./dog.jpg";
       break;
     }
     case 1: {
-      imagePath = "./granma.jpg";
+      //imagePath = "./granma.jpg";
+      selection = "./granma.jpg";
       break;
     }
     case 2: {
-      imagePath = "./turtle.jpg";
+      //imagePath = "./turtle.jpg";
+      selection = "./turtle.jpg";
       break;
     }
     case 3: {
-      imagePath = "./bird.jpg";
+      //imagePath = "./bird.jpg";
+      selection = "./bird.jpg";
       break;
     }
   }
-  //return imagePath;
+  return selection;
 }
