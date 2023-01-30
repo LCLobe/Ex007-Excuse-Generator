@@ -4,10 +4,13 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/dog.jpg";
-//import "./assets/img/bird.jpg";
+import "./assets/img/bird.jpg";
 import "./assets/img/granma.jpg";
 import "./assets/img/turtle.jpg";
 import "./assets/img/4geeks.ico";
+
+let whoRandomSelection = 0;
+let imagePath = "";
 
 window.onload = function() {
   //write your code here
@@ -17,12 +20,16 @@ window.onload = function() {
   theExcuse.innerHTML = generateExcuse();
 
   document?.querySelector("#btn")?.addEventListener("click", () => {
-    theExcuse.innerHTML = generateExcuse();
+    //theExcuse.innerHTML = generateExcuse();
+    location.reload();
   });
   document?.querySelector("#cuerpo")?.addEventListener("click", () => {
-    theExcuse.innerHTML = generateExcuse();
+    //theExcuse.innerHTML = generateExcuse();
+    location.reload();
   });
+  imageDisplay(whoRandomSelection);
   document.getElementById("author").src = imagePath;
+  //document.getElementById("author").src = "./dog.jpg";
 };
 
 function generateExcuse() {
@@ -37,7 +44,8 @@ function generateExcuse() {
     "while I was praying"
   ];
 
-  let whoRandomSelection = Math.floor(Math.random() * who.length);
+  whoRandomSelection = Math.floor(Math.random() * who.length);
+  // let whoRandomSelection = Math.floor(Math.random() * who.length);
   let actionRandomSelection = Math.floor(Math.random() * action.length);
   let whatRandomSelection = Math.floor(Math.random() * what.length);
   let whenRandomSelection = Math.floor(Math.random() * when.length);
@@ -47,24 +55,25 @@ function generateExcuse() {
   return result;
 }
 
-function imageDisplay() {
-  let imagePath = "";
-  switch (whoRandomSelection) {
+function imageDisplay(selection) {
+  //let imagePath ="";
+  switch (selection) {
     case 0: {
-      imagePath = "./assets/img/dog.jpg";
+      imagePath = "./dog.jpg";
       break;
     }
     case 1: {
-      imagePath = "./assets/img/dog.jpg";
+      imagePath = "./granma.jpg";
       break;
     }
     case 2: {
-      imagePath = "./assets/img/dog.jpg";
+      imagePath = "./turtle.jpg";
       break;
     }
     case 3: {
-      imagePath = "./assets/img/dog.jpg";
+      imagePath = "./bird.jpg";
       break;
     }
   }
+  //return imagePath;
 }
