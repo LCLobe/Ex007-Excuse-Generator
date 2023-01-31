@@ -16,32 +16,16 @@ window.onload = function() {
   //write your code here
   console.log("Hello Rigo from the console!");
   const theExcuse = document.querySelector("#the-excuse");
+  render(theExcuse);
 
-  let theExcuseInfo = generateExcuse();
-  theExcuse.innerHTML = theExcuseInfo[0];
-
-  let theExcusePicture = imageDisplay(theExcuseInfo[1]);
-  document.getElementById("author").src = theExcusePicture;
-
-  //imageDisplay(whoRandomSelection);
-  //document.getElementById("author").src = imagePath;
-  //document.getElementById("author").src = "./dog.jpg";
-
-  document?.querySelector("#btn")?.addEventListener("click", () => {
-    theExcuseInfo = generateExcuse();
-    theExcuse.innerHTML = theExcuseInfo[0];
-    theExcusePicture = imageDisplay(theExcuseInfo[1]);
-    document.getElementById("author").src = theExcusePicture;
-    //theExcuse.innerHTML = generateExcuse();
-    //location.reload();
+  const btn = document?.querySelector("#btn");
+  btn?.addEventListener("click", () => {
+    render(theExcuse);
   });
-  document?.querySelector("#cuerpo")?.addEventListener("click", () => {
-    theExcuseInfo = generateExcuse();
-    theExcuse.innerHTML = theExcuseInfo[0];
-    theExcusePicture = imageDisplay(theExcuseInfo[1]);
-    document.getElementById("author").src = theExcusePicture;
-    //theExcuse.innerHTML = generateExcuse();
-    //location.reload();
+
+  const bodyArea = document?.querySelector("#bodyArea");
+  bodyArea?.addEventListener("click", () => {
+    render(theExcuse);
   });
 };
 
@@ -102,4 +86,13 @@ function imageDisplay(selection) {
     }
   }
   return selection;
+}
+
+function render(querySelectorId) {
+  let theExcuseInfo = generateExcuse();
+  querySelectorId.innerHTML = theExcuseInfo[0];
+  let theExcusePicture = imageDisplay(theExcuseInfo[1]);
+  document.getElementById("author").src = theExcusePicture;
+  //theExcuse.innerHTML = generateExcuse();
+  //location.reload();
 }
